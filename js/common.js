@@ -16,8 +16,8 @@ $.ajaxSetup({crossDomain: true, xhrFields: {withCredentials: true}});
 
 //设置全局路径
 var appData = {
-		baseurl: 'http://localhost:3000'
-		// baseurl: 'http://fullstack.net.cn:3000'
+		// baseurl: 'http://localhost:3000'
+		baseurl: 'http://fullstack.net.cn:3000'
 	}
 
 
