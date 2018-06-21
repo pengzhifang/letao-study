@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="css/system.css">
 	<script src="assets/jquery/jquery.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/artTemplate/template-native.js"></script>
 	<script src="js/common.js"></script>
+	<script src="js/product.js"></script>
 </head>
 <body>
 	<div class="system">
@@ -70,27 +72,8 @@
 	        </div>
 	        <div class="body">
 	        	<button class="operation btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">添加商品</button>
-	        	<table class="table table-bordered">
-	        		<tr>
-	        			<th>商品编号</th>
-	        			<th>商品名称</th>
-	        			<th>商品描述</th>
-	        			<th>商品库存</th>
-	        			<th>商品尺寸</th>
-	        			<th>是否下架</th>
-	        			<th>操作</th>
-	        		</tr>
-	        		<tr>
-	        			<td>6</td>
-	        			<td>【莹恋】MIZUNO美津浓V1GA159002乒乓球鞋男鞋女鞋室内综合训练鞋</td>
-	        			<td>商品描述</td>
-	        			<td>44</td>
-	        			<td>35-56</td>
-	        			<td>已上架商品</td>
-	        			<td>
-	        				<button type="button" class="btn btn-danger">下架</button>
-	        			</td>
-	        		</tr>
+	        	<table class="table table-bordered" id="productBox">
+	        		
 	        	</table>
 	        </div>
 		</div>
@@ -139,5 +122,29 @@
 	    </div>
 	  </div>
 	</div>
+	<script type="text/html" id="productTpl">
+		<tr>
+			<th>商品编号</th>
+			<th>商品名称</th>
+			<th>商品描述</th>
+			<th>商品库存</th>
+			<th>商品尺寸</th>
+			<th>是否下架</th>
+			<th>操作</th>
+		</tr>
+		<% for (var i = 0; i < rows.length; i++) { %>
+		<tr>
+			<td><%=rows[i].id %></td>
+			<td><%=rows[i].proName %></td>
+			<td><%=rows[i].proDesc %></td>
+			<td><%=rows[i].num %></td>
+			<td><%=rows[i].size %></td>
+			<td><%=rows[i].statu == '1' ? '已上架商品' : '已下架商品' %></td>
+			<td>
+				<button type="button" class="btn btn-danger" id="statusBtn"><%=rows[i].statu == '1' ? '下架' : '上架' %></button>
+			</td>
+		</tr>
+		<% } %>
+	</script>
 </body>
 </html>

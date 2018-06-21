@@ -8,6 +8,23 @@ $(function(){
 
 	});
 
+	//退出登录
+	$('.login_out_bot').on('click', function () {
+		$.ajax({
+			url: `${appData.baseurl}/employee/employeeLogout`,
+			type: 'get',
+			success: function (response) {
+				// console.log(response);
+				if (response.success) {
+					location.href = 'login.html';
+				} else {
+					alert(response.message);
+				}
+			}
+		})
+	})
+	
+
 
 });
 
